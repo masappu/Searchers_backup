@@ -8,10 +8,29 @@
 import Foundation
 
 protocol PlaceSearchPresenterInput{
-    func viewDidLoad()
+    func loadView()
+    func searchButton()
+}
+
+protocol PlaceSearchPresenterOutput{
+    func setTableViewInfo()
+    func reloadTableView()
 }
 
 class PlaceSearchPresenter: PlaceSearchPresenterInput{
-    func viewDidLoad() {
+    
+    private var view: PlaceSearchPresenterOutput!
+    
+    init(view:PlaceSearchPresenterOutput){
+        self.view = view
+    }
+    
+    func loadView() {
+        self.view.setTableViewInfo()
+        self.view.reloadTableView()
+    }
+    
+    func searchButton(){
+        
     }
 }
